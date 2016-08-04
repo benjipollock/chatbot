@@ -92,7 +92,7 @@ ChatBot.sendMessage = function () {
             //Sending the user line to the server using the POST method
             $.post(ChatBot.SERVER_PATH + "/chat", {"msg": chatInput.val()}, function (result) {
                 if (typeof result != "undefined" && "msg" in result) {
-                    ChatBot.setAnimation(result.animation);
+                    ChatBot.setAnimation(result.animation); //!!!define animation per input
                     ChatBot.write(result.msg, "boto");
                 } else {
                     //The server did not erred but we got an empty result (handling as error)
@@ -105,14 +105,7 @@ ChatBot.sendMessage = function () {
     }
 };
 
-$.ajax("/test",{
-    type: "POST",
-    data: {"msg": "hello"},
-    dataType: "json",
-    contentType: "application/json"})
-    .done(function (data) {
-        console.log(data);
-    });
+
 
 
 
